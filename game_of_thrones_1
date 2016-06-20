@@ -1,0 +1,52 @@
+package game_thrones;
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+/*
+Dothraki are planning an attack to usurp King Robert's throne. King Robert learns of this conspiracy from Raven and plans to lock the single door through which the enemy can enter his kingdom.
+
+But, to lock the door he needs a key that is an anagram of a certain palindrome string.
+The king has a string composed of lowercase English letters. Help him figure out whether any anagram of the string can be a palindrome or not.
+
+Input Format: 
+    A single line which contains the input string.
+
+Output Format:
+    A single line which contains YES or NO in uppercase.
+ */
+public class Game_Thrones {
+
+    public static void main(String[] args) {
+
+        Scanner myScan = new Scanner(System.in);
+        String inputString = myScan.nextLine();
+        String ans;
+        // Assign ans a value of YES or NO, depending on whether or not inputString satisfies the required condition
+        int[] lettersInput = new int[26];
+
+        for (int j = 0; j < inputString.length(); j++) {
+            int ch = (int) inputString.charAt(j) - 97;
+            lettersInput[ch]++;
+        }
+        int numberOfOdds = 0;
+
+        for (int i = 0; i < 26; i++) {
+            if (lettersInput[i] % 2 != 0) {
+                numberOfOdds++;
+            }
+        }
+
+        if (numberOfOdds <= 1) {
+            ans = "YES";
+        } else {
+            ans = "NO";
+        }
+
+        System.out.println(ans);
+        myScan.close();
+    }
+}
